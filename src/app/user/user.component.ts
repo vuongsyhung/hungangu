@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, computed, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -15,9 +15,14 @@ export class UserComponent {
 avatar = input.required<string>()
 name = input<string>()
 
-get imagePath(){
+// Using like a function to subscribe data
+imagePath = computed(() => {
   return "assets/users/"+this.avatar()
-}
+})
+
+// get imagePath(){
+//   return "assets/users/"+this.avatar()
+// }
 
 onSelectUser(){} 
 }
