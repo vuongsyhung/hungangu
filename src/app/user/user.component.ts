@@ -1,4 +1,5 @@
-import { Component, computed, Input, input } from '@angular/core';
+import { Component, computed, Input, input, Output, output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,23 +9,23 @@ import { Component, computed, Input, input } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-// @Input() avatar!: string
-// @Input() name!: string
+@Input({required: true}) id!: string 
+@Input({required: true}) avatar!: string 
+@Input() name!: string
 
-// Using like a function to subscribe data
-avatar = input.required<string>()
-name = input<string>()
+//@Output() UserOutput = new EventEmitter();
 
-// Using like a function to subscribe data
-imagePath = computed(() => {
-  return "assets/users/"+this.avatar()
-})
+UserOutput = output<string>()
 
-// get imagePath(){
-//   return "assets/users/"+this.avatar()
-// }
+UserId: string = "Vuong Sy Hung"
 
-onSelectUser(){} 
+
+get imagePath(){
+  return "assets/users/"+this.avatar
+ }
+
+onSelectUser(){
+  this.UserOutput.emit(this.UserId)
 }
-
-
+  
+}

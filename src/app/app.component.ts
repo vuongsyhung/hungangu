@@ -13,4 +13,8 @@ import { DumyUser } from '../assets/dumy-user';
 })
 export class AppComponent {
   users = DumyUser
+
+  Receiver(id: string){
+     console.log("id from user: "+ id)
+  }
 }
